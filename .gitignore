@@ -1,0 +1,56 @@
+# Python-specific
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Virtual environment
+env/
+venv/
+ENV/
+.venv/
+.virtualenv/
+
+# PyInstaller
+*.spec
+
+# Logs
+*.log
+*.out
+*.err
+
+# Config files and local environment variables
+*.env
+.env.*
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Chrome Extension-specific
+*.crx
+*.pem
+*.pfx
+
+# Node.js-related (if included in the project)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# IDE-specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# General
+*.bak
+*.tmp
+*.lock
