@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "description": "A basic extension to reset your QuizMe progress",
   "icons": {
-    "32": "images/reset32p.png"
+    "16": "images/reset16.png",
+    "48": "images/reset48.png",
+    "128": "images/reset128.png"
   },
   "action": {
     "default_popup": "src/index.html",
