@@ -49,3 +49,9 @@ If the project is hosted on a Git repository:
 ## Acknowledgments
 - Built for improving user experience on the QuizMe platform.
 - Uses Chrome Extensions API for seamless browser integration.
+
+## Privacy Policy
+
+This extension does not collect, store, or share any personal or user data. All actions performed by the extension are executed locally within the user's browser.
+
+Permissions requested (e.g., `activeTab`, `scripting`, `storage`) are solely used to enable the extension's functionality on the QuizMe platform. No data is transmitted to external servers or third parties.
