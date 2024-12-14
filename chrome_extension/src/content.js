@@ -7,13 +7,16 @@ function resetThisPage(priority) {
     });
 }
 
+let processCompleted = false;
 async function resetPageAndNavigate(priority) {
+    if (processCompleted) return; 
     resetThisPage(priority);
     const nextButton = document.querySelector('.pagination a[rel="next"]');
     if (nextButton) {
         chrome.runtime.sendMessage({ type: "pageNavigated" });
         nextButton.click(); 
     } else {
+        processCompleted = true;
         alert("process completed");
     }
 }

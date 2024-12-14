@@ -16,8 +16,5 @@
   "background": {
     "service_worker": "src/background.js"
   },
-  "permissions": ["scripting", "activeTab","tabs","storage"],
-  "host_permissions": [
-    "https://quizeme.co.il/*"
-  ]
+  "permissions": ["scripting", "activeTab","tabs","storage"]
 }
