@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMe Reset</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 id="title">QuizMe Reset</h1>
+    <div class="button-container">
+        <label for="priorityValue" class="dropdown-label" id="dropdownLabel">Choose frequency:</label>
+        <select id="priorityValue" class="priority-dropdown">
+            <option value="0" id="optionRegular">Regular</option>
+            <option value="1" id="optionNever">Never</option>
+            <option value="2" id="optionLow">Low</option>
+            <option value="3" id="optionHigh">High</option>
+        </select>
+        <button
+                id="resetThisPage"
+                title="This will reset the frequency of all questions on this page to the chosen value.">
+            Reset This Page
+        </button>
+        <button
+                id="resetAllPages"
+                title="This will reset the frequency of all questions across all pages to the chosen value.">
+            Reset All Pages
+        </button>
+        <button id="toggleLanguage">עברית</button>
+    </div>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>

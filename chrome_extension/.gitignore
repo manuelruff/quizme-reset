@@ -1,0 +1,78 @@
+# Compiled source
+*.o
+*.pyc
+*.class
+
+# Logs and debugging files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node modules
+node_modules/
+npm-cache/
+.yarn/
+.yarnrc
+.pnp.js
+.pnp.cjs
+.pnp.loader.mjs
+
+# Build outputs
+dist/
+build/
+*.zip
+
+# Local environment settings
+.env
+.env.local
+*.env
+
+# Chrome-specific files
+*.pem
+*.p12
+*.key
+*.crt
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE-specific files
+.idea/
+.vscode/
+*.iml
+
+# Coverage
+coverage/
+*.lcov
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+*.old
+~$*
+
+# Cache
+.cache/
+.cache-loader/
+
+# Test reports
+*.test-results.xml
+
+# Source maps
+*.map
+
+# Manifest processing
+manifest.json.*
+manifest-*.json
+manifest-temp.json
+
+# Miscellaneous
+*.crx
+*.user.js
