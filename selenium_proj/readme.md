@@ -32,8 +32,8 @@ If the project is hosted on a Git repository:
 1. **Clone the Repository**:
    - Open a terminal or command prompt and run the following command:
      ```bash
-     git clone https://[github.com/your-repo/quizme-automation.git](https://github.com/manuelruff/quizme-reset)
-     cd quizme-automation
+     git clone https://[github.com/manuelruff/quizme-reset](https://github.com/manuelruff/quizme-reset)
+     cd quizme-reset/selenium_proj
      ```
 
 2. **Install Required Libraries**:
