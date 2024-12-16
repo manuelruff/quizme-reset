@@ -18,20 +18,21 @@ function getPaginationInfo() {
 
     const currentPage = parseInt(pagination.querySelector('.active a')?.href.match(/p=(\d+)/)?.[1], 10) || 1;
     const totalPages = Math.max(...pages);
-
     return { currentPage, totalPages };
 }
 
 async function resetPageAndNavigate(priority) {
     resetThisPage(priority);
-    const nextButton = document.querySelector('.pagination a[rel="next"]');
-    const { currentPage, totalPages } = getPaginationInfo();
-    if (nextButton && currentPage < totalPages) {
-        chrome.runtime.sendMessage({type: "pageNavigated"});
-        nextButton.click();
-    } else {
-        alert("Process completed!");
-    }
+    chrome.storage.local.get(["currentPage", "totalPages"], (data) => {
+        const { currentPage, totalPages } = data;
+        if (currentPage < totalPages) {
+            chrome.storage.local.set({currentPage: currentPage + 1,});
+            chrome.runtime.sendMessage({type: "navigateNext"});
+        } else {
+            alert("Process completed!");
+            location.reload();
+        }
+    });
 }
 
 chrome.runtime.onMessage.addListener((message) => {
@@ -48,14 +49,7 @@ chrome.runtime.onMessage.addListener((message) => {
         resetThisPage(message.selectedPriority);
     } else if (message.action === "resetAllPages") {
         chrome.storage.local.get(["lastAction", "lastPriority"], (data) => {
-            if (data.lastAction && data.lastPriority) {
-                resetPageAndNavigate(data.lastPriority);
-            } else {
-                chrome.runtime.sendMessage({
-                    type: "displayAlert",
-                    message: "We had a problem. Please reset and try again.",
-                });
-            }
+            resetPageAndNavigate(data.lastPriority);
         });
     }
 });

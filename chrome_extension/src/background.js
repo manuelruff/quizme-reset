@@ -1,44 +1,41 @@
 chrome.runtime.onMessage.addListener(async (message, sender) => {
-  if (message.type === "pageNavigated") {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    await new Promise(resolve => {
-      const checkPageLoaded = () => {
-        chrome.scripting.executeScript(
-          {
-            target: { tabId: sender.tab.id },
-            func: () => document.readyState,
+  if (message.type === "navigateNext") {
+      const tabId = sender.tab.id;
+      chrome.scripting.executeScript({
+          target: { tabId },
+          func: () => {
+              const nextButton = document.querySelector('.pagination a[rel="next"]');
+              if (nextButton) nextButton.click();
           },
-          (results) => {
-            if (results[0]?.result === "complete") {
-              resolve(); 
-            } else {
-              setTimeout(checkPageLoaded, 1000);
-            }
-          }
-        );
-      };
-      checkPageLoaded();
+      });
+
+      await new Promise((resolve) => {
+        const interval = setInterval(() => {
+            chrome.scripting.executeScript(
+                {
+                    target: { tabId },
+                    func: () => document.readyState,
+                },
+                (results) => {
+                    if (results[0]?.result === "complete") {
+                        clearInterval(interval);
+                        resolve();
+                    }
+                }
+            );
+        }, 1000);
     });
-    chrome.storage.local.get(["currentPage", "totalPages"], (data) => {
-      const { currentPage, totalPages } = data;
-      if (currentPage <= totalPages) {
-        chrome.storage.local.set({ currentPage: currentPage + 1 }, () => {
-          chrome.scripting.executeScript(
-            {
-              target: { tabId: sender.tab.id },
-              files: ["src/content.js"],
-            },
-            () => {
-              chrome.tabs.sendMessage(sender.tab.id, {
-                action: "resetAllPages",
-              });
-            }
-          );
-        });
-      } else {
-        return;
-      }
-  });
     
+      chrome.scripting.executeScript(
+          {
+              target: { tabId },
+              files: ["src/content.js"],
+          },
+          () => {
+              chrome.tabs.sendMessage(tabId, {
+                  action: "resetAllPages",
+              });
+          }
+      );
   }
 });

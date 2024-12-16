@@ -16,5 +16,5 @@
   "background": {
     "service_worker": "src/background.js"
   },
-  "permissions": ["scripting", "activeTab","tabs","storage"]
+  "permissions": ["scripting", "activeTab","storage"]
 }
