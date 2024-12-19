@@ -28,7 +28,6 @@ async function resetPageAndNavigate(priority) {
         const { currentPage, totalPages } = data;
         if (currentPage < totalPages) {
             chrome.storage.local.set({currentPage: currentPage + 1,});
-            console.log("content "+ currentPage + " " + totalPages);
             chrome.runtime.sendMessage({type: "navigateNext"});
         } else {
             alert("Process completed!");
