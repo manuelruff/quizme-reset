@@ -1,3 +1,5 @@
+let activeTabId = null;
+
 chrome.runtime.onMessage.addListener(async (message, sender) => {
   if (message.type === "navigateNext") {
       const tabId = sender.tab.id;
