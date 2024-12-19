@@ -58,4 +58,8 @@ chrome.runtime.onMessage.addListener((message) => {
             resetPageAndNavigate(data.lastPriority);
         });
     }
+    else if (message.action === "showAlert") {
+        alert(message.message); 
+        location.reload();
+    }
 });
