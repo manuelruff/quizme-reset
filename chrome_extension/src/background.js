@@ -24,7 +24,6 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
                 if (nextButton) nextButton.click();
             },
         });
-        // console.log("pressed next button");
         // Wait for the next page to load
         await new Promise((resolve) => {
             const interval = setInterval(() => {
@@ -42,13 +41,9 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
                 );
             }, 1000);
         });
-        // wait a bit more for the page to fully load
-        // await new Promise((resolve) => setTimeout(resolve, 300));
-        // console.log("Next page loaded");
         // Check that the user did not switch to a different page than the expected one (next page)
         chrome.tabs.get(tabId, (tab) => {
             const currentUrl = tab.url;
-
             if (!currentUrl.includes("quiz-discussion")) {
                 injectContentScriptAndSendMessage(tabId, {
                     action: "showAlert",
@@ -61,7 +56,6 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
                 const { currentPage } = data;
                 const urlParams = new URLSearchParams(new URL(currentUrl).search);
                 const pageInUrl = parseInt(urlParams.get("p"), 10);
-                // console.log("Current page:", currentPage, "Page in URL:", pageInUrl);
                 if (pageInUrl !== currentPage) {
                     injectContentScriptAndSendMessage(tabId, {
                         action: "showAlert",
@@ -69,7 +63,6 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
                     });
                     return; // Stop if the page number does not match the expected page
                 }
-
                 // Reinject the content script to handle the next page
                 injectContentScriptAndSendMessage(tabId, {
                     action: "resetAllPages",
