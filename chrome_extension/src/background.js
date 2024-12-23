@@ -24,17 +24,17 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
                 if (nextButton) nextButton.click();
             },
         });
-
+        // console.log("pressed next button");
         // Wait for the next page to load
         await new Promise((resolve) => {
             const interval = setInterval(() => {
                 chrome.scripting.executeScript(
                     {
                         target: { tabId },
-                        func: () => document.readyState,
+                        func: () => document.querySelector('.pagination a[rel="next"]'),
                     },
                     (results) => {
-                        if (results[0]?.result === "complete") {
+                        if (results[0]?.result) {
                             clearInterval(interval);
                             resolve();
                         }
@@ -42,7 +42,9 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
                 );
             }, 1000);
         });
-
+        // wait a bit more for the page to fully load
+        // await new Promise((resolve) => setTimeout(resolve, 300));
+        // console.log("Next page loaded");
         // Check that the user did not switch to a different page than the expected one (next page)
         chrome.tabs.get(tabId, (tab) => {
             const currentUrl = tab.url;
@@ -59,7 +61,7 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
                 const { currentPage } = data;
                 const urlParams = new URLSearchParams(new URL(currentUrl).search);
                 const pageInUrl = parseInt(urlParams.get("p"), 10);
-
+                // console.log("Current page:", currentPage, "Page in URL:", pageInUrl);
                 if (pageInUrl !== currentPage) {
                     injectContentScriptAndSendMessage(tabId, {
                         action: "showAlert",

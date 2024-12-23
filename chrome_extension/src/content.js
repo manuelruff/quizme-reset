@@ -60,6 +60,7 @@ chrome.runtime.onMessage.addListener((message) => {
     }
     else if (message.action === "showAlert") {
         alert(message.message); 
+        chrome.storage.local.clear(function() {});
         location.reload();
     }
 });
