@@ -8,6 +8,8 @@ https://github.com/user-attachments/assets/0b00ba34-ffd4-4abb-806c-66b17e2a8afc
 ## Overview
 The **QuizMe Reset Chrome Extension** is a simple and user-friendly tool designed to allow users to reset quiz frequencies on the QuizMe platform. It features dynamic language switching between English and Hebrew, along with a clean and responsive UI.
 
+👉 **[Install the QuizMe Reset Chrome Extension](https://chromewebstore.google.com/detail/quizme-reset/kjdkgiahokfmbjaogejdmcnpklhacjni?hl=en-GB&utm_source=ext_sidebar)** 👈
+
 ## Features
 - Reset quiz frequencies on the current page or across all pages.
 - Dropdown menu to select frequency values (e.g., Regular, Never, Low, High).
