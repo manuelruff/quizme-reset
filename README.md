@@ -1,12 +1,6 @@
 
 # QuizMe Tools Repository
 
-## Demonstration Video
-
-Watch this video to see the QuizMe Reset Chrome Extension in action:
-
-### add video here
-
 ## Overview
 
 This repository contains tools designed to streamline and enhance the process of resetting quiz frequencies on QuizMe.
