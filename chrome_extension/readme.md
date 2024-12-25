@@ -1,9 +1,9 @@
 
 # QuizMe Reset Chrome Extension
 
-## Demonstration Video
-
-Watch this video to see the QuizMe Reset Chrome Extension in action:
+## Demonstration
+[<video src="[https://user-images.githubusercontent.com/12345678/your-video.mp4](https://github.com/manuelruff/quizme-reset/issues/1#issue-2759047049)"></video>
+](https://github.com/manuelruff/quizme-reset/issues/1#issue-2759047049)
 
 ### add video here
 
