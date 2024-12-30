@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "QuizMe Reset",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An extension to reset your QuizMe progress",
   "icons": {
     "16": "images/reset16.png",
